@@ -1,0 +1,26 @@
+#include<iostream>
+#include<String>
+using namespace std;
+int main(){
+    string myname;
+    cout<<"Input your name: ";
+    cin>>myname;
+    cout<<"Myname is: "<<myname;
+	float a,b,sum,mi,mul,di;
+	
+	cin>>a>>b;
+	cout<<"A= "<<a<<"\n";
+	cout<<"B= "<<b<<"\n";
+	sum=a+b;
+	mi=a-b;
+	mul=a*b;
+	di=a/b;
+	
+	cout<<"Sum="<<sum<<"\n";
+	cout<<"Minus="<<mi<<"\n";
+	cout<<"Multiply="<<mul<<"\n";
+	cout<<"Divise="<<di<<"\n";
+	
+	
+    return 0;
+}
