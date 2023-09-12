@@ -8,15 +8,15 @@ int main(){
 	cout<<"b="<<b<<"\n";
 	cout<<"c="<<c<<"\n";
 	if(b!=0&&c!=0){
-		float cal,x;
+		float cal;
 		cal=-c/b;
 		cout<<"x="<<cal<<endl;
 	}
 	else if(c==0){
-		cout<<"0=0 is true";
+		cout<<"x=0";
 	}
 	else{
-		cout<<"Can't calculate"<<endl;
+		cout<<"It's not true'"<<endl;
 		cout<<"Please input you number again";
 	}
 
