@@ -3,8 +3,9 @@
 #define _USE_MATH_DEFINES
 using namespace std;
 int main(){
+
 	
-	float v,h,R,r,S,l,V;
+    float h,R,r,S,l,V;
     cout<<"You need to input some value...!"<<endl;
     cout << "(R): ";
     cin >> R;
