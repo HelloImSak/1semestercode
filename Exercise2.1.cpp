@@ -13,7 +13,7 @@ int main() {
 
     double result;
 
-    if (x < 0) {
+    if (x < 1) {
         // Calculate a^ln(|x|) when x is less than 0
         result = pow(a, log(fabs(x)));
     } else {
