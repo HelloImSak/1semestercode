@@ -14,8 +14,8 @@ int main() {
     cin >> n;
 
     // Calculate the interest rate (p) using the formula
-    double r = 0.01;  // Initial guess for the monthly interest rate (in decimal form)
-    double epsilon = 0.001;  // A small value for precision
+    double r = 0.01;  //guess for the monthly interest rate (in decimal form)
+    double epsilon = 0.001;  // A small value
     double balance;
 
     do {
@@ -28,7 +28,7 @@ int main() {
         }
     } while (balance > 0);
 
-    // Convert the interest rate from decimal to percentage
+    //rate from decimal to percentage
     double p = r * 12 * 100;
 
     // Output the calculated interest rate
