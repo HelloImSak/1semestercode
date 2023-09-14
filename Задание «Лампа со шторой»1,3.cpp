@@ -23,3 +23,21 @@ int main() {
 
     return 0;
 }
+
+
+#include <iostream>
+#include <string>
+
+int main() {
+    bool isDaytime = true;  // Change to false for nighttime
+    bool lampOn = false;    // Change to true to turn on the lamp
+    bool curtainsOpen = false; // Change to false to close the curtains
+
+    if ((isDaytime && curtainsOpen) || lampOn) {
+        std::cout << "It's bright in the room." << std::endl;
+    } else {
+        std::cout << "It's dark in the room." << std::endl;
+    }
+
+    return 0;
+}
