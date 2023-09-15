@@ -11,6 +11,18 @@ int main(){
 	cin>>a>>b;
 	cout<<"A= "<<a<<"\n";
 	cout<<"B= "<<b<<"\n";
+	if((b&&a)==0){
+	sum=a+b;
+	mi=a-b;
+	mul=a*b;
+	di=a/b;
+	
+	cout<<"Sum="<<sum<<"\n";
+	cout<<"Minus="<<mi<<"\n";
+	cout<<"Multiply="<<mul<<"\n";
+	cout<<"Divise="<<"indeter"<<"\n";
+	}
+	else{
 	sum=a+b;
 	mi=a-b;
 	mul=a*b;
@@ -20,7 +32,7 @@ int main(){
 	cout<<"Minus="<<mi<<"\n";
 	cout<<"Multiply="<<mul<<"\n";
 	cout<<"Divise="<<di<<"\n";
-	
+	}
 	
     return 0;
 }
