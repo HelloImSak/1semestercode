@@ -1,7 +1,11 @@
-#include<iostream>
+#include <string>
+#include <cstdio>
+#include <iostream>
 #include<cmath>
 using namespace std;
-int main(){
+
+int main()
+{
 	float a,b,c,x1,x2,deta,fkto,otherpart;
 	cout<<"Enter your number a,b,c: \n";
 	cin>>a>>b>>c;
@@ -19,6 +23,11 @@ int main(){
 	            cout<<"x2="<<"-"<<fkto<<"i"<<endl;
 	        }
 	    }
+	    else{
+	        cout<<"x1=0"<<endl;
+	        a=-b/a;
+	        cout<<"x2="<<a<<endl;
+	    }
 	}
 	else if(a==0)
 	{
@@ -35,9 +44,10 @@ int main(){
 	        if(c==0)
 	            cout<<"the equalation has infinity solution"<<endl;
 	        else if(c!=0)
-	            cout<<"it's not corresct";
+	            cout<<"it's not correct";
 	    }
 	}
+	
 	else if((a&&b&&c)!=0){
 	    if(deta>0){
 	    	x1=(-b+sqrt(deta))/(2*a);
@@ -62,6 +72,7 @@ int main(){
 	}
 	else 
 	  cout<<"Invalid input";
-	  
-	return 0;
+	 
+    return 0;
 	}
+    
