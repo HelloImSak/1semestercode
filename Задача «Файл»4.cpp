@@ -35,5 +35,48 @@ int main() {
         return 1;
     }
 
+   --------------------------------------------------------------------
+
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    // Создаем файл и записываем в него 10 чисел
+    ofstream outputFile("numbers.txt");
+    if (!outputFile.is_open()) {
+        cout << "Не удалось создать файл." << endl;
+        return 1;
+    }
+
+    cout << "Введите 10 чисел:" << endl;
+    for (int i = 0; i < 10; i++) {
+        double number;
+        cin >> number;
+        outputFile << number << endl;
+    }
+    outputFile.close();
+
+    // Открываем файл снова и находим сумму чисел
+    ifstream inputFile("numbers.txt");
+    if (!inputFile.is_open()) {
+        cout << "Не удалось открыть файл для чтения." << endl;
+        return 1;
+    }
+
+    double sum = 0;
+    double number;
+    while (inputFile >> number) {
+        sum += number;
+    }
+    inputFile.close();
+
+    cout << "Сумма чисел: " << sum << endl;
+
+    return 0;
+}
+
+
     return 0;
 }
