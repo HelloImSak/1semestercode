@@ -1,10 +1,11 @@
-#include <iostream>
+##include <iostream>
 #include <string>
 using namespace std;
 
 int main() {
     string timeOfDay;
-    bool isDay, areCurtainsOpen, isLampOn;
+    string areCurtainsOpen; // Change the data type to string
+    string isLampOn; // Change the data type to string
 
     cout << "Is it day or night? (day/night): ";
     cin >> timeOfDay;
@@ -15,7 +16,7 @@ int main() {
     cout << "Is the lamp on? (yes/no): ";
     cin >> isLampOn;
 
-    if ((timeOfDay == "day" && areCurtainsOpen) || isLampOn) {
+    if ((timeOfDay == "day" && areCurtainsOpen == "yes") || isLampOn == "yes") {
         cout << "The room is bright." << endl;
     } else {
         cout << "The room is not bright." << endl;
@@ -23,7 +24,7 @@ int main() {
 
     return 0;
 }
-
+---------------------------------------------------------------------------------------------
 
 #include <iostream>
 #include <string>
