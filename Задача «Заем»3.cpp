@@ -14,6 +14,7 @@ int main() {
     cout << "Enter the number of years (n): ";
     cin >> n;
 
+    if(p>0){
     // Convert the annual interest rate from percentage to decimal
     p = p / 100.0;
 
@@ -23,6 +24,9 @@ int main() {
     double monthlyPayment = S * (monthlyInterestRate / denominator);
 
     cout << "Monthly payment (m): " << monthlyPayment << " rubles" << endl;
-
+    }
+    else 
+        cout<<"Invalid input percent p!!"<<endl;
+    
     return 0;
 }
