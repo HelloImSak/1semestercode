@@ -15,7 +15,7 @@ int main() {
     cin >> b;
 
     if (b > y && b > x) {
-        double result = (log(b - y)/log(2.7)) * sqrt(b - x);
+        double result = log(b - y) * sqrt(b - x);
         cout << "Result: " << result << endl;
     } else {
         cout << "Invalid input. (b must be greater than both x and y)" << endl;
