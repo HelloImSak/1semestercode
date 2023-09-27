@@ -18,21 +18,24 @@ int main() {
     double epsilon = 0.001;  // A small value
     double balance;
 
-    do {
-        balance = S;
-        r += 0.001;  // Increase the interest rate guess
-
-        for (int i = 0; i < n * 12; ++i) {
-            balance -= m;
-            balance += balance * (r / 12);  // Monthly interest
-        }
-    } while (balance > 0);
-
-    //rate from decimal to percentage
-    double p = r * 12 * 100;
-
-    // Output the calculated interest rate
-    cout << "The loan was issued at an annual interest rate of " << p << "%" << std::endl;
-
+	if ((m * 12 * n)!= S) {
+	    do {
+	        balance = S;
+	        r += 0.001;  // Increase the interest rate guess
+	
+	        for (int i = 0; i < n * 12; ++i) {
+	            balance -= m;
+	            balance += balance * (r / 12);  // Monthly interest
+	        }
+	    } while (balance > 0);
+	
+	    //rate from decimal to percentage
+	    double p = r * 12 * 100;
+	
+	    // Output the calculated interest rate
+	    cout << "The loan was issued at an annual interest rate of " << p << "%" << std::endl;
+	}else if((m * 12 * n)== S){
+		cout << "The loan was issued at an annual interest rate of p = 0%" << std::endl;
+	}
     return 0;
 }
