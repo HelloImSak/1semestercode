@@ -23,7 +23,7 @@ int main() {
         return 1;  // Exit with an error code
     }
 
-    if (b > y && b > x) {
+    if (b > y && b >= x) {
         double result = log(b - y) * sqrt(b - x);
         cout << "Result: " << result << endl;
     } else {
