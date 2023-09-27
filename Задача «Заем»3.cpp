@@ -21,12 +21,16 @@ int main() {
     // Calculate the monthly payment
     double monthlyInterestRate = p / 12.0;
     double denominator = 1 - pow(1 + monthlyInterestRate, -12 * n);
-    double monthlyPayment = S * (monthlyInterestRate / denominator);
-
+    double monthlyPayment= S * (monthlyInterestRate / denominator);
     cout << "Monthly payment (m): " << monthlyPayment << " rubles" << endl;
     }
+    else if(p==0){
+    	double monthlyPayment = S/(12*n);
+    	cout << "Monthly payment with 0% (m): " << monthlyPayment << " rubles" << endl;
+	}
     else 
         cout<<"Invalid input percent p!!"<<endl;
+        
     
     return 0;
 }
