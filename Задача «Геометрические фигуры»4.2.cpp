@@ -1,36 +1,66 @@
 #include <iostream>
 #include <cmath>
+
 using namespace std;
-double calRectangle(double length, double width) {
+
+// Function to calculate the area of a rectangle
+double calculateRectangleArea(double length, double width) {
     return length * width;
 }
-double calTriangle(double a, double b, double c) {
-    double s = (a + b + c) / 2.0;
-    return sqrt(s * (s - a) * (s - b) * (s - c));
+
+// Function to calculate the area of a triangle
+double calculateTriangleArea(double base, double height) {
+    return 0.5 * base * height;
 }
 
-double calCircle(double radius) {
-    const double pi = 3.14;
-    return pi * radius * radius;
+// Function to calculate the area of a circle
+double calculateCircleArea(double radius) {
+    return M_PI * pow(radius, 2);
 }
 
 int main() {
-    //data
-    double rectangleLength = 5.0, rectangleWidth = 3.0;
-
-    double triangleSideA = 3.0, triangleSideB = 4.0, triangleSideC = 5.0;
-
-    double circleRadius = 2.0;
-
-    // Calculate using function
-    double rectangle = calRectangle(rectangleLength, rectangleWidth);
-    double triangle = calTriangle(triangleSideA, triangleSideB, triangleSideC);
-    double circle = calCircle(circleRadius);
-
-    //The results
-    cout << "Area of Rectangle: " << rectangle << std::endl;
-    cout << "Area of Tringle: " << triangle << std::endl;
-    cout << "Area of Cicle: " << circle << std::endl;
-
+    char choice;
+    
+    do{
+    cout << "Choose a geometric figure to calculate its area:" << endl;
+    cout << "1. Rectangle" << endl;
+    cout << "2. Triangle" << endl;
+    cout << "3. Circle" << endl;
+    
+    int option;
+    cin >> option;
+    
+    switch (option) {
+        case 1: {
+            double length, width;
+            cout << "Enter the length and width of the rectangle: ";
+            cin >> length >> width;
+            double area = calculateRectangleArea(length, width);
+            cout << "The area of the rectangle is: " << area << endl;
+            break;
+        }
+        case 2: {
+            double base, height;
+            cout << "Enter the base and height of the triangle: ";
+            cin >> base >> height;
+            double area = calculateTriangleArea(base, height);
+            cout << "The area of the triangle is: " << area << endl;
+            break;
+        }
+        case 3: {
+            double radius;
+            cout << "Enter the radius of the circle: ";
+            cin >> radius;
+            double area = calculateCircleArea(radius);
+            cout << "The area of the circle is: " << area << endl;
+            break;
+        }
+        default:
+            cout << "Invalid choice." << endl;
+    }
+    	cout << "Choose to continue or not? (y/n): ";
+        cin >> choice;
+    } while (choice == 'y' || choice == 'Y');
+    
     return 0;
 }
