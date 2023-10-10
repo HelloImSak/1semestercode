@@ -1,19 +1,30 @@
 #include <iostream>
 #include <string>
-#include<algorithm>
+#include <algorithm>
+
 using namespace std;
+
 int main() {
-    string inputString = "qwertgbvfcdxszayhnujmkioplwdfr";
+    // Задаем строку из 30 букв
+    string inputString;
+    cout<<"Input letter: ";
+    cin>>inputString;
+    
+    // Проверяем, что длина строки равна 30
     if (inputString.length() != 30) {
-        cout << "The string must in 30 letters";
-        return 0;
-
+        cout << "The string must contain 30 letters." << endl;
+        return 1;
     }
+    
+    // Сортируем строку в алфавитном порядке
     sort(inputString.begin(), inputString.end());
-    cout << "Results of sorted: " << inputString << endl;
-
+    
+    // Выводим отсортированную строку
+    cout << "Sorts String: " << inputString << endl;
+    
     return 0;
 }
+
 -------------------------------------------
     #include <iostream>
 #include <string>
