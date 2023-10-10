@@ -1,15 +1,17 @@
-#include <iostream>
-#include <cmath>
+#include<iostream>
+#include<cmath>
 using namespace std;
-
-int main() {
-    //Задача «Порядок»
-    int N;
-    cout<<"Input N: ";
-    cin>>N;
-    
-        for(int i=1;i<=10;i++){
-            cout<<N+i<<endl;
-		}
-    return 0;
+int main(){
+	int n;
+	double pointNum;
+	cout<<"Input Number: ";
+	cin>>pointNum;
+	n=static_cast<int>(ceil(pointNum));
+	if(n<1)
+		n=1;
+	for(int i=n;i<n+10;++i){
+		cout<<i<<" ";
+	}
+	cout<<endl;
+	return 0;
 }
