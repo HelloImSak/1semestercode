@@ -26,18 +26,36 @@ int main() {
 }
 
 -------------------------------------------
-    #include <iostream>
-#include <string>
+ #include <iostream>
 #include <algorithm>
+
 using namespace std;
 
 int main() {
-    string input = "aeybnvcdxtwrzpklomqfsuhgj";
 
-    // Сортировка строковой переменной
-    sort(input.begin(), input.end());
+    string str;
+    cout<<"Input letter: ";
+    cin>>str;
+    
+    char chars[30];
+    for (int i = 0; i < 30; i++) {
+        chars[i] = str[i];
+    }
 
-    cout << "Отсортированная строка: " << input << endl;
+    
+    for (int i = 0; i < 30; i++) {
+        for (int j = i + 1; j < 30; j++) {
+            if (chars[i] > chars[j]) {
+                char temp = chars[i];
+                chars[i] = chars[j];
+                chars[j] = temp;
+            }
+        }
+    }
+
+    for (int i = 0; i < 30; i++) {
+        cout <<chars[i];
+    }
 
     return 0;
 }
