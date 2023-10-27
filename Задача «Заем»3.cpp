@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-    double S, p, n;
+    double S, p, n,m,r,a,b;
 
     cout << "Enter the loan amount (S) in rubles: ";
     cin >> S;
@@ -14,24 +14,27 @@ int main() {
     cout << "Enter the number of years (n): ";
     cin >> n;
 
-    if(p>0){
-    // Convert the annual interest rate from percentage to decimal
-    p = p / 100.0;
-
-    // Calculate the monthly payment
-    double monthlyInterestRate = p / 12.0;
-    double denominator = 1 - pow(1 + monthlyInterestRate, -12 * n);
-    double monthlyPayment= S * (monthlyInterestRate / denominator);
-    cout << "Monthly payment (m): " << monthlyPayment << " rubles" << endl;
-    }
-    else if(p==0){
-    	double monthlyPayment = S/(12*n);
-    	cout << "Monthly payment with 0% (m): " << monthlyPayment << " rubles" << endl;
+    if(S<0&&p<0)
+    	cout<<"Error"<<endl;
+    else{
+    	r=p/100;//p=r*100
+    	cout<<r<<endl;
+    	b=pow((1+r),n);
+    	a=12*(b-1);
+    	cout<<b<<endl;
+    	
+    	if(a<0)
+    		cout<<"error"<<endl;
+    	else if(r==0){
+    		cout<<S/(12*n)<<endl;
+		}
+		else
+		{
+			b=pow((1+r),n);
+			m=(S*r*b)/(12*(b-1));
+			cout<<m<<endl;
+		}
 	}
-    else 
-        cout<<"Invalid input percent p!!"<<endl;
-        
-    
     return 0;
 }
 --------------------------------------------------------------------------------------------------------------------
