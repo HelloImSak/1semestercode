@@ -1,41 +1,31 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
-int main() {
-    double S, m;
-    int n;
 
-    // Input loan amount, monthly payment, and loan duration
-    cout << "Enter the loan amount (S rubles): ";
+int main() {
+    double S, n, m, r, rt = 0.0001;
+    cout << "S= ";
     cin >> S;
-    cout << "Enter the monthly payment (m rubles): ";
+    cout << "m= ";
     cin >> m;
-    cout << "Enter the loan duration in years (n years): ";
+    cout << "n= ";
     cin >> n;
 
-    // Calculate the interest rate (p) using the formula
-    double r = 0.01;  //guess for the monthly interest rate (in decimal form)
-    double epsilon = 0.001;  // A small value
-    double balance;
+    if (n == 0 && S <= 0) {
+        cout << "Incorrect input" << endl;
+        return 1; // Exit the program with an error code
+    }
 
-	if ((m * 12 * n)!= S) {
-	    do {
-	        balance = S;
-	        r += 0.001;  // Increase the interest rate guess
-	
-	        for (int i = 0; i < n * 12; ++i) {
-	            balance -= m;
-	            balance += balance * (r / 12);  // Monthly interest
-	        }
-	    } while (balance > 0);
-	
-	    //rate from decimal to percentage
-	    double p = r * 12 * 100;
-	
-	    // Output the calculated interest rate
-	    cout << "The loan was issued at an annual interest rate of " << p << "%" << std::endl;
-	}else if((m * 12 * n)== S){
-		cout << "The loan was issued at an annual interest rate of p = 0%" << std::endl;
-	}
-    return 0;
+    double mt;
+    double increment = 0.0001;
+
+    for (r = rt; ; r += increment) {
+        mt = S * r * pow(1 + r, n) / (12 * (pow(1 + r, n) - 1));
+        if (mt >= m) {
+            break;
+        }
+    }
+
+    cout << "p= " << r * 100 << "%" << endl;
+    return 0;                                          
 }
