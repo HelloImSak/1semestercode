@@ -1,1 +1,57 @@
+#include <iostream>
+using namespace std;
+// Function to find the greatest common divisor of two numbers by division
+int gcd_by_division(int a, int b) {
+    // While b is not equal to 0
+    while (b != 0) {
+        // Swap a and b
+        int temp = a;
+        a = b;
+        b = temp % b;
+    }
 
+    // Return a
+    return abs(a);
+}
+
+// Function to find the greatest common divisor of two numbers by subtraction
+int gcd_by_subtraction(int a, int b) {
+    // While a is not equal to b
+    a = abs(a);
+    b = abs(b);
+    while (a != b) {
+        // If a is greater than b, subtract b from a
+        if (a > b) {
+            a -= b;
+        }
+
+        // Otherwise, subtract a from b
+        else {
+            b -= a;
+        }
+    }
+
+    // Return a
+    return a;
+}
+
+int main() {
+
+    cout << "Enter two numbers: ";
+    int a, b;
+    if (!(cin >> a >> b)) {
+        cout << "Invalide input...!";
+        return 0;
+    }
+    // Find the greatest common divisor by division
+    int gcdbydivision = gcd_by_division(a, b);
+
+    // Find the greatest common divisor by subtraction
+    int gcdbysubtraction = gcd_by_subtraction(a, b);
+
+    // Print the greatest common divisors
+    cout << "The greatest common divisor by division is " << gcdbydivision << std::endl;
+    cout << "The greatest common divisor by subtraction is " << gcdbysubtraction << std::endl;
+
+    return 0;
+}
