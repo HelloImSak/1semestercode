@@ -1,29 +1,27 @@
 #include <iostream>
 #include <cmath>
-using namespace std;
+
 int main() {
-    // Define the range of x values (e.g., from -2π to 2π)
-    double startX = -2 * 3.14;
-    double endX = 2 * 3.14;
-    double stepSize = 0.1; // Adjust this for smoother or coarser graph
+    const int width = 80;  
+    const int height = 20; 
+    const double pi = 3.14159265358979323846;
 
-    // Iterate through the x values and print the corresponding sine values
-    for (double x = startX; x <= endX; x += stepSize) {
-        double y = sin(x);
+    for (int y = height - 1; y >= 0; --y) {
+        for (int x = 0; x < width; ++x) {
+            double angle = static_cast<double>(x) / width * 4 * pi; 
+            double sineValue = cos(angle);
+            int plotHeight = static_cast<int>((sineValue + 1) / 2 * height);
 
-        // Scale the sine value to fit the screen
-        int screenHeight = 20; // Adjust for desired screen height
-        int yScaled = static_cast<int>((y + 1.0) * 0.5 * screenHeight);
-
-        // Print spaces before the graph to align it
-        for (int i = 0; i < yScaled; ++i) {
-            cout << ' ';
+            if (plotHeight == y) {
+                std::cout << '*';
+            } else if (plotHeight < y && plotHeight + 1 > y) {
+                std::cout << '|'; // Línea vertical para representar la función
+            } else {
+                std::cout << ' ';
+            }
         }
-    
-        // Print the graph character (e.g., '*')
-        cout << '*';
-
-        // Move to the next line
-        cout << endl;
+        std::cout << '\n';
     }
+
+    return 0;
 }
