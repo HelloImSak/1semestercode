@@ -1,22 +1,25 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-using namespace std;
-int main() {
 
-    string hexadecimal_number;
-    cout << "Enter a hexadecimal number: ";
-    cin >> hexadecimal_number;
+int main() {
+    std::string hexadecimal_number;
+    std::cout << "Enter a hexadecimal number: ";
+    std::cin >> hexadecimal_number;
 
     long decimal_number = strtol(hexadecimal_number.c_str(), nullptr, 16);
+    std::cout <<"Convert from hex to decimal: "<<decimal_number << "\n";
+    std::string octal_number = "";
+    std::cout << "Conversion steps:\n";
 
-    string octal_number = "";
     while (decimal_number != 0) {
-        octal_number = char((decimal_number % 8) + '0') + octal_number;
+        long remainder = decimal_number % 8;
+        std::cout << "Step: Remainder " << remainder << " from dividing " << decimal_number << " by 8.\n";
+        octal_number = char(remainder + '0') + octal_number;
         decimal_number /= 8;
     }
 
-    cout << "The octal representation of hexadecimal number " << hexadecimal_number << " is " << octal_number << "." << std::endl;
+    std::cout << "\nThe octal representation of hexadecimal number " << hexadecimal_number << " is " << octal_number << "." << std::endl;
 
     return 0;
 }
