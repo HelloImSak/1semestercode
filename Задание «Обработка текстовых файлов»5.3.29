@@ -1,0 +1,25 @@
+#include <iostream>
+
+int main() {
+    // Input string
+    std::string input = "HelloWorld";
+
+    char charArray[input.length() + 1];
+    strcpy(charArray, input.c_str());
+
+    // Perform character-wise sorting using a simple bubble sort algorithm
+    int length = input.length();
+    for (int i = 0; i < length - 1; ++i) {
+        for (int j = 0; j < length - i - 1; ++j) {
+            if (charArray[j] > charArray[j + 1]) {
+                // Swap characters if they are out of order
+                char temp = charArray[j];
+                charArray[j] = charArray[j + 1];
+                charArray[j + 1] = temp;
+            }
+        }
+    }
+    std::cout << "Sorted characters: " << charArray << std::endl;
+
+    return 0;
+}
