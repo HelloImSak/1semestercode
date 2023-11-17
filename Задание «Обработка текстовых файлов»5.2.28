@@ -1,0 +1,19 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+int main() {
+    // Input string
+    string String = "HelloWorld";
+
+    // Convert string to a character array
+    const char* charArray = String.c_str();
+
+    // Output the character array with indices
+    cout << "Character array:\n";
+    for (int i = 0; i < String.length(); ++i) {
+        cout << "[" << i << "]= " << charArray[i] << endl;
+    }
+    cout << endl;
+
+    return 0;
+}
