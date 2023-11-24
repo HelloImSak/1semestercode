@@ -1,26 +1,46 @@
 #include <iostream>
 #include <string>
-#include <cstdlib>
+#include <cmath>
 using namespace std;
 
-int main() {
-    string hexadecimal_number;
-    cout << "Enter a hexadecimal number: ";
-    cin >> hexadecimal_number;
+// Function to convert a number from one base to another
+string convertBase(const string& number, int fromBase, int toBase) {
+    // Convert the input number to decimal first
+    int decimalNumber = stoi(number, nullptr, fromBase);
 
-    long decimal_number = strtol(hexadecimal_number.c_str(), nullptr, 16);
-    cout <<"Convert from hex to decimal: "<<decimal_number << "\n";
-    string octal_number = "";
-    cout << "Steps from decimal to octal:\n";
-
-    while (decimal_number != 0) {
-        long remainder = decimal_number % 8;
-        cout << remainder << " from dividing " << decimal_number << " / 8.\n";
-        octal_number = char(remainder + '0') + octal_number;
-        decimal_number /= 8;
+    // Convert the decimal number to the desired base
+    string result = "";
+    while (decimalNumber > 0) {
+        int remainder = decimalNumber % toBase;
+        char digit = (remainder < 10) ? (remainder + '0') : (remainder - 10 + 'A');
+        result = digit + result;
+        decimalNumber /= toBase;
     }
 
-    cout << "\nThe octal representation of hexadecimal number " << hexadecimal_number << " is " << octal_number << "." <<endl;
+    return result.empty() ? "0" : result;
+}
+
+int main() {
+    cout << "Enter a number: ";
+    string inputNumber;
+    cin >> inputNumber;
+
+    int fromBase, toBase;
+    
+    cout << "Enter the base of the input number: ";
+    cin >> fromBase;
+
+    cout << "Enter the base for conversion: ";
+    cin >> toBase;
+
+    if ((fromBase < 2 ,toBase < 2)  || (fromBase > 16, toBase > 16)) {
+        cout << "Invalid base. Supported bases are between 2 and 16." << endl;
+        return 1;
+    }
+
+    string result = convertBase(inputNumber, fromBase, toBase);
+
+    cout << "Number in base " << toBase << ": " << result << endl;
 
     return 0;
 }
