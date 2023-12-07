@@ -104,29 +104,20 @@ int main() {
     return 0;
 }
 ------------------------------------------------------------------
-#include <iostream>///5 it not completely 
-#include <vector>
+#include <iostream>
+
+using namespace std;
 
 int main() {
-    long long N, K;
-    std::cin >> N >> K;
+    int N, K;
+    cin >> N >> K;
 
-    std::vector<long long> arr(N, 0);
-
-    long long cnt = 0;
-    long long freecnt = N;
-    for (long long i = 0; i < K; i++) {
-        if (K % 2 == 1 || i < K / 2) {
-            arr[N / 2 - 1 + cnt] = 1;
-        }
-        freecnt--;
-        cnt += (freecnt + 1) % 2;
+    while(K != 1){
+        N = (N - K % 2) / 2;
+            K /= 2;
     }
 
-    long long ans1 = N / 2 - 1 + cnt;
-    long long ans2 = N / 2 + cnt;
-
-    std::cout << ans1 << " " << ans2 << std::endl;
+    cout << (N - 1) / 2 << " " << N / 2 << endl;
 
     return 0;
 }
