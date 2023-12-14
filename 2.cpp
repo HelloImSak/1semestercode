@@ -64,45 +64,73 @@ int main() {
 #include <vector>
 #include <algorithm>
 
-using namespace std;
-
-int max_contiguous_couples(vector<int> free_seats) {
-    sort(free_seats.begin(), free_seats.end());
-
-    int max_couples = 0;
-    int current_couples = 0;
-
-    for (int i = 0; i < free_seats.size(); i++) {
-        int seat = free_seats[i];
-
-        if (seat == 5) {
-            current_couples++;
-        } else if (seat % 4 == 0 && seat - 5 > 0) {
-            int previous_seat = free_seats[i - 1];
-            if (previous_seat % 4 == 3 && previous_seat - 5 == seat) {
-                current_couples++;
-            }
-        }
-
-        max_couples = max(max_couples, current_couples);
+bool IsPlaceFree(int place) {
+    if (place % 2 == 0) {
+        return false;
     }
+    return place != 1 && place != 54;
+}
 
-    return max_couples;
+int section(int k) {
+    if (k <= 36)
+        return (k - 1) / 4;
+    else
+        return 8 - (k - 37) / 2;
 }
 
 int main() {
-    int N;
-    cin >> N;
+    const int coupes = 9;
+    const int coupeSeats = 4;
+    const int sideSeats = 2;
 
-    vector<int> free_seats(N);
-    for (int i = 0; i < N; i++) {
-        cin >> free_seats[i];
+    std::vector<int> count(coupes, 0);
+
+    int n;
+    std::cout << "Enter the number of free seats: ";
+    std::cin >> n;
+
+    std::vector<int> places(n);
+    std::cout << "Enter the seat:" << std::endl;
+    for (int i = 0; i < n; ++i) {
+        std::cin >> places[i];
+        count[section(places[i])] += 1;
     }
 
-    cout << max_contiguous_couples(free_seats) << endl;
+    int ans_coupes = 0;
+    int curr_coupes = 0;
+
+    int max_count_places = 0;
+    int count_places = 0;
+
+    for (int i = 0; i < coupes; ++i) {
+        std::cout << "Bus " << i + 1 << ": " << count[i] << " seats" << std::endl;
+
+        if (count[i] >= coupeSeats + sideSeats) {
+            curr_coupes += 1;
+            ans_coupes = std::max(ans_coupes, curr_coupes);
+        } else {
+            curr_coupes = 0;
+        }
+    }
+
+    std::sort(places.begin(), places.end());
+
+    for (int i = 0; i < n; ++i) {
+        if (IsPlaceFree(places[i])) {
+            count_places++;
+        } else {
+            max_count_places = std::max(max_count_places, count_places);
+            count_places = 0;
+        }
+    }
+    max_count_places = std::max(max_count_places, count_places);
+
+    std::cout << "Maximum consecutive seat free bus: " << ans_coupes << std::endl;
+    std::cout << "Maximum consecutive free places: " << max_count_places << std::endl;
 
     return 0;
 }
+
 ------------------------------------------------------------------
 #include <iostream>//5
 
